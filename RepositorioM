@@ -1,0 +1,110 @@
+/*
+ * Mariana Midory Iniguez Rodriguez 
+ * 10-10-2023
+ * RepositorioM
+ * Centro Universitario de los Altos | Universidad de Guadalajara
+ * Ingenieria en computacion
+ * Profesor: Sergio Franco Casillas
+ * Descripcion: 
+ */
+package repositoriom;
+import java.util.Scanner;
+//import java.util.ArrayList;
+
+/**
+ *
+ * @author Mariana Midory Iñiguez Rodriguez 
+ */
+public class RepositorioM {
+    //private ArrayList<Alumnos> alumnos = new ArrayList<Alumnos>();
+    //private ArrayList<Docentes> docentes = new ArrayList<Docentes>();
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opcion = 0, option = 0;//variable para el ingreso del codigo
+        String nombrec;
+        Alumnos formato1 = new Alumnos();//Objeto de librerias
+        //si encarga de ejecutar el codigo hasta que el usuario lo solicite
+        while(opcion !=3){
+            System.out.println("\n|  Bienvenido al menu     |");
+            System.out.println("|:::-------------------:::|");
+            System.out.println("| 1)Ingresar alumno       |");
+            System.out.println("| 2)Ingresar trabajadores |");
+            System.out.println("| 3)Salir                 |");
+            System.out.println("|:::-------------------:::|");
+            System.out.print("Opcion: ");
+            //se encarga de validar si se esta ingresando el valor 
+            //del rango establecido correctamente
+            try {
+                opcion = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("\nSeleccione correctamente\n");
+            }//fin del try catch
+            //muestra el caso, dependiendo del solicitado 
+            switch(opcion){
+                case 1:
+                        option = 0;
+                        while(option !=2){
+                            System.out.println("1) Ingresar datos");
+                            System.out.println("2) Salir");
+                            System.out.print("Opcion: ");
+                            try {
+                                option = sc.nextInt();
+                            } catch (Exception e) {
+                                System.out.println("\nSeleccione correctamente\n");
+                            }//fin del try catch
+                            if(option == 1){
+                                System.out.print("\nIngresa nombre: ");
+                                nombrec = sc.nextLine();
+                                formato1.setName(nombrec);
+                            }else{
+                                System.out.println("Volvera al menu");
+                            }//fin del else
+                        }//fin del while
+                    break;
+                case 2:
+                    //se ejecutara hasta que el usuario lo solicite 
+                    while(option !=4){
+                        System.out.println("1) Docentes");
+                        System.out.println("2) Intendente");
+                        System.out.println("3) Secretarias");
+                        System.out.println("4) Salir");
+                        System.out.print("Opcion: ");
+                        //se encarga de validar si se esta ingresando el valor 
+                        //del rango establecido correctamente
+                        try {
+                            option = sc.nextInt();
+                        } catch (Exception e) {
+                            sc.nextLine();
+                            System.out.println("\nSeleccione correctamente\n");
+                        }//fin del try catch
+                        //muestra el caso, dependiendo del solicitado 
+                        switch(option){
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                    System.out.println("Volvera al menu");
+                                break;
+                            default:
+                                    System.out.println("\nOpcion no valida.");
+                                break;
+                        }//fin del swithc
+                    }//fin del while
+                    break;
+                case 3:
+                    System.out.println("\nAdios");
+                    break;
+                default:
+                    System.out.println("\nOpcion no valida.");
+                    break;
+            }//fin del switch
+        }//fin del while
+        sc.close(); //cierra el scaner
+    }//fin del main
+}//fin de la clase principal
