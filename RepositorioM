@@ -9,23 +9,27 @@
  */
 package repositoriom;
 import java.util.Scanner;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 /**
  *
  * @author Mariana Midory Iñiguez Rodriguez 
  */
 public class RepositorioM {
-    //private ArrayList<Alumnos> alumnos = new ArrayList<Alumnos>();
-    //private ArrayList<Docentes> docentes = new ArrayList<Docentes>();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        ArrayList<Alumnos> listadealumnos = new ArrayList<>();//arraylist de alumnos
+        ArrayList<Docentes> listadedocentes = new ArrayList<>();
         int opcion = 0, option = 0;//variable para el ingreso del codigo
-        String nombrec;
-        Alumnos formato1 = new Alumnos();//Objeto de librerias
+        int cod = 0, nmaterias = 0;
+        byte ed=0;
+        char datoChar = ' ';
+        float datofloat = 0;
+        String datoString = "";
+        boolean init3 = true;
         //si encarga de ejecutar el codigo hasta que el usuario lo solicite
         while(opcion !=3){
             System.out.println("\n|  Bienvenido al menu     |");
@@ -39,6 +43,7 @@ public class RepositorioM {
             //del rango establecido correctamente
             try {
                 opcion = sc.nextInt();
+                sc.nextLine();
             } catch (Exception e) {
                 System.out.println("\nSeleccione correctamente\n");
             }//fin del try catch
@@ -46,20 +51,135 @@ public class RepositorioM {
             switch(opcion){
                 case 1:
                         option = 0;
-                        while(option !=2){
-                            System.out.println("1) Ingresar datos");
-                            System.out.println("2) Salir");
-                            System.out.print("Opcion: ");
+                        while(option !=3){
+                            System.out.println("\n1) Ingresar datos");
+                            System.out.println("2) Mostrar alumno/s");
+                            System.out.println("3) Salir");
+                            System.out.println("Opcion: ");
+                            //se encarga de validar si se esta ingresando el valor 
+                            //del rango establecido correctamente
                             try {
                                 option = sc.nextInt();
+                                sc.nextLine();
                             } catch (Exception e) {
                                 System.out.println("\nSeleccione correctamente\n");
                             }//fin del try catch
                             if(option == 1){
-                                System.out.print("\nIngresa nombre: ");
-                                nombrec = sc.nextLine();
-                                formato1.setName(nombrec);
-                            }else{
+                                Alumnos alumno = new Alumnos(' ', 15, "", "", 0, "", (byte)0, ' ', "", "", "", "", "", "");
+                                sc.nextLine();
+                                
+                                System.out.println("Ingresa nombre: ");
+                                datoString = sc.nextLine();
+                                alumno.setName(datoString);
+                                //se encarga de validar si se esta ingresando el valor 
+                                //del rango establecido correctamente
+                                try{
+                                    System.out.println("Codigo: ");
+                                    cod = sc.nextInt();
+                                    alumno.setCodigo(cod);
+                                    System.out.println("Edad: ");
+                                    ed = sc.nextByte();
+                                    alumno.setEdad(ed);
+                                }catch (Exception e) {
+                                    System.out.println("\nSeleccione correctamente\n");
+                                    sc.nextLine();
+                                }//fin del try catch
+                                sc.nextLine();
+                                
+                                System.out.println("Correo: ");
+                                datoString = sc.nextLine();
+                                sc.nextLine();
+                                alumno.setCorreo(datoString);
+                                System.out.println("Telefono: ");
+                                datoString = sc.nextLine();
+                                alumno.setTelefono(datoString);
+                                System.out.println("Ocupacion: ");
+                                datoString = sc.nextLine();
+                                alumno.setOcupacion(datoString);
+                                System.out.println("Domicilio: ");
+                                datoString = sc.nextLine();
+                                alumno.setDomocilio(datoString);
+                                System.out.println("CURP: ");
+                                datoString = sc.nextLine();
+                                alumno.setCurp(datoString);
+                                sc.nextLine();
+                                System.out.println("IMMS: ");
+                                datoString = sc.nextLine();
+                                alumno.setImss(datoString);
+                                sc.nextLine();
+                                System.out.println("Sexo ('H' o 'M'): ");
+                                datoChar = sc.next().charAt(0);
+                                alumno.setSexo(datoChar);
+                                System.out.println("Pago el semeste('Y' o 'N'): ");
+                                datoChar = sc.next().charAt(0);
+                                alumno.setPaga(datoChar);
+                                sc.nextLine();
+                                System.out.println("Estado Civil: ");
+                                datoString = sc.nextLine();
+                                alumno.setEstadocivil(datoString);
+                                System.out.println("Salon del alumno: ");
+                                datoString = sc.nextLine();
+                                alumno.setSalon(datoString);
+                                
+                                //comienzos para meter Materias con promedio y salon//
+                                while(init3){
+                                    try{
+                                        System.out.print("Cantidad de materias(1-15): ");
+                                        nmaterias = sc.nextInt();
+                                    if (nmaterias > 0 && nmaterias < 16) 
+                                        init3 = false;
+                                    else{
+                                        System.out.println("Numero fuera del rango permitido");
+                                    }//fin del else if
+                                    } catch(Exception e){
+                                        System.out.println("Error");
+                                        sc.nextLine();
+                                    }//fin del try-cathc
+                                }//fin del while
+                                init3 = true; //Se vuelve a igualar a true para usarlo a continuacion
+                                sc.nextLine();
+                                
+                                for(int i =0; i <nmaterias; i++){
+                                    System.out.println("Materia: ");
+                                    datoString = sc.nextLine();
+                                    alumno.setMaterias(i,datoString);
+                                    System.out.println("Horario de la materia: ");
+                                    datoString = sc.nextLine();
+                                    alumno.setHorario(i, datoString);
+                                    while(init3){
+                                        try{
+                                            System.out.println("Promedio en la materia: ");
+                                            datofloat = sc.nextFloat();
+                                            if (datofloat >= 0 && datofloat <= 100) {
+                                                 init3 = false;
+                                            }else{
+                                                System.out.println("Fuera del rango (0-100)");
+                                            }//fin del else 
+                                        }catch(Exception e) {
+                                            System.out.println("\nSeleccione correctamente\n");
+                                            sc.nextLine();
+                                        }//fin del try-catch
+                                    }//fin del while dentro del for
+                                    alumno.setPromedio(i, datofloat);
+                                    init3 = true; //Se iguala para seguir usandolo en el transcurso del for
+                                    sc.nextLine();
+                                }//fin del for
+                                //valida que ha metido los datos de forma correcta
+                                if (cod != 0 && datoChar != ' ' && datoString != "" && ed != 0){
+                                    listadealumnos.add(alumno);
+                                }//fin de if que valida
+                            }else if(option == 2){
+                                for (Alumnos alumno : listadealumnos){ //Inicio de for de arrayList
+                                    System.out.println("Nombre: " + alumno.getName() + ", Edad: " + alumno.getEdad() + ", Codigo: " +alumno.getCodigo()
+                                    +", Correo: "+alumno.getCorreo()+ ", Sexo: " + alumno.getSexo() + ", Telefono: " + alumno.getTelefono() + ", Domicilio: " + alumno.getDomocilio()
+                                    + ", CURP: " + alumno.getCurp() + ", IMSS: " + alumno.getImss() + ", Ocupacion: "+alumno.getOcupacion()
+                                    +", Estado civil: "+alumno.getEstadocivil()+", paga: "+alumno.getPaga()+", Salon: "+alumno.getSalon());
+                                 for (int i = 0; i < nmaterias; i++) { //Otro for para mostrar arreglos
+                                    System.out.println("Materia " + (i + 1) + ": " + alumno.getMaterias(i) + ", Promedio: " + alumno.getPromedio(i)+ ", Horario: "+alumno.getHorario(i));
+                                    System.out.println("Salon: "+alumno.getSalon());
+                                } //Fin de for para mostrar arreglos
+                                } //Fin de for de ArrayList
+                            }else {
                                 System.out.println("Volvera al menu");
                             }//fin del else
                         }//fin del while
@@ -76,15 +196,123 @@ public class RepositorioM {
                         //del rango establecido correctamente
                         try {
                             option = sc.nextInt();
-                        } catch (Exception e) {
                             sc.nextLine();
+                        } catch (Exception e) {
                             System.out.println("\nSeleccione correctamente\n");
                         }//fin del try catch
                         //muestra el caso, dependiendo del solicitado 
                         switch(option){
                             case 1:
+                                option = 0;
+                                while(option !=3){
+                                    System.out.println("\n1) Ingresar datos");
+                                    System.out.println("2) Mostrar docente/s");
+                                    System.out.println("3) Salir");
+                                    System.out.println("Opcion: ");
+                                    //se encarga de validar si se esta ingresando el valor 
+                                    //del rango establecido correctamente
+                                    try {
+                                        option = sc.nextInt();
+                                        sc.nextLine();
+                                    } catch (Exception e) {
+                                        System.out.println("\nSeleccione correctamente\n");
+                                    }//fin del try catch
+                                    //si la opcion es uni
+                                    if(option == 1){
+                                        Docentes docente = new Docentes(15,"","","",0,"","","","");
+                                        sc.nextLine();
+                                        
+                                        System.out.println("Ingresa nombre: ");
+                                        datoString = sc.nextLine();
+                                        docente.setName(datoString);
+                                        System.out.println("");
+                                        //se encarga de validar si se esta ingresando el valor 
+                                        //del rango establecido correctamente
+                                        try{
+                                            System.out.println("Codigo: ");
+                                            cod = sc.nextInt();
+                                            docente.setCodigo(cod);
+                                            System.out.println("Edad: ");
+                                            ed = sc.nextByte();
+                                            docente.setEdad(ed);
+                                            System.out.println("Sueldo: ");
+                                            datofloat = sc.nextFloat();
+                                            docente.setSueldo(datofloat);
+                                        }catch (Exception e) {
+                                            System.out.println("\nSeleccione correctamente\n");
+                                            sc.nextLine();
+                                        }//fin del try catch
+                                        sc.nextLine();
+                                        System.out.println("Correo: ");
+                                        datoString = sc.nextLine();
+                                        sc.nextLine();
+                                        docente.setCorreo(datoString);
+                                        System.out.println("Telefono: ");
+                                        datoString = sc.nextLine();
+                                        docente.setTelefono(datoString);
+                                        System.out.println("Ocupacion: ");
+                                        datoString = sc.nextLine();
+                                        docente.setOcupacion(datoString);
+                                        System.out.println("Domicilio: ");
+                                        datoString = sc.nextLine();
+                                        docente.setDomocilio(datoString);
+                                        System.out.println("CURP: ");
+                                        datoString = sc.nextLine();
+                                        docente.setCurp(datoString);
+                                        sc.nextLine();
+                                        System.out.println("IMMS: ");
+                                        datoString = sc.nextLine();
+                                        docente.setImss(datoString);
+                                        sc.nextLine();
+                                        System.out.println("RFC: ");
+                                        datoString = sc.nextLine();
+                                        docente.setRfc(datoString);
+                                        sc.nextLine();
+                                        System.out.println("Sexo ('H' o 'M'): ");
+                                        datoChar = sc.next().charAt(0);
+                                        docente.setSexo(datoChar);
+                                        sc.nextLine();
+                                        System.out.println("Estado Civil: ");
+                                        datoString = sc.nextLine();
+                                        docente.setEstadocivil(datoString);
+                                        System.out.println("Profesion: ");
+                                        datoString = sc.nextLine();
+                                        docente.setProfesion(datoString);
+                                        //falta el cubiculo, materias, asignacion y no se que mas
+                                    }else if(option == 2){
+                                        for (Docentes docente : listadedocentes){ //Inicio de for de arrayList
+                                            System.out.println("Nombre: " + docente.getName() + ", Edad: " + docente.getEdad() + ", Codigo: " + docente.getCodigo()
+                                            +", Correo: "+docente.getCorreo()+ ", Sexo: " + docente.getSexo() + ", Telefono: " + docente.getTelefono() + ", Domicilio: " + docente.getDomocilio()
+                                            + ", CURP: " + docente.getCurp() + ", IMSS: " + docente.getImss() + ", Ocupacion: "+docente.getOcupacion()
+                                            +", Estado civil: "+docente.getEstadocivil()+", Profesion: "+docente.getProfesion()+", Sueldo: "+docente.getSueldo());
+                                        for (int i = 0; i < nmaterias; i++) { //Otro for para mostrar arreglos
+                                            //System.out.println("Materia " + (i + 1) + ": " + docente.getMaterias(i) + ", Horario: "+docente.getHorario(i));
+                                            } //Fin de for para mostrar arreglos
+                                        } //Fin de for de ArrayList
+                                    }else{
+                                        System.out.println("\nVolvera al menu");
+                                    }//fin del else
+                                }//fin del while
                                 break;
                             case 2:
+                                option = 0;
+                                while(option !=3){
+                                    System.out.println("\n1) Ingresar datos");
+                                    System.out.println("2) Mostrar Indentente/s");
+                                    System.out.println("3) Salir");
+                                    System.out.println("Opcion: ");
+                                    //se encarga de validar si se esta ingresando el valor 
+                                    //del rango establecido correctamente
+                                    try {
+                                        option = sc.nextInt();
+                                        sc.nextLine();
+                                    } catch (Exception e) {
+                                        System.out.println("\nSeleccione correctamente\n");
+                                    }//fin del try catch
+                                    if(option == 1){
+                                        
+                                    }//fin del if
+                                }//fin del while
                                 break;
                             case 3:
                                 break;
