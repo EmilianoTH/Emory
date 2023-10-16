@@ -22,7 +22,9 @@ public class RepositorioM {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Alumnos> listadealumnos = new ArrayList<>();//arraylist de alumnos
-        ArrayList<Docentes> listadedocentes = new ArrayList<>();
+        ArrayList<Docentes> listadedocentes = new ArrayList<>();//arraylist de docentres
+        ArrayList<Intendente> listadeintendentes = new ArrayList<>();//arrsylist de intendente
+        ArrayList<Secretarios> listadesecretarios = new ArrayList<>();//arrsylist de secretarios
         int opcion = 0, option = 0;//variable para el ingreso del codigo
         int cod = 0, nmaterias = 0;
         byte ed=0;
@@ -310,11 +312,183 @@ public class RepositorioM {
                                         System.out.println("\nSeleccione correctamente\n");
                                     }//fin del try catch
                                     if(option == 1){
+                                        Intendente intedent = new Intendente("",0,"","","","");
+                                        sc.nextLine();
                                         
-                                    }//fin del if
+                                        System.out.println("Ingresa nombre: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setName(datoString);
+                                        System.out.println("");
+                                        //se encarga de validar si se esta ingresando el valor 
+                                        //del rango establecido correctamente
+                                        try{
+                                            System.out.println("Codigo: ");
+                                            cod = sc.nextInt();
+                                            intedent.setCodigo(cod);
+                                            System.out.println("Edad: ");
+                                            ed = sc.nextByte();
+                                            intedent.setEdad(ed);
+                                            System.out.println("Sueldo: ");
+                                            datofloat = sc.nextFloat();
+                                            intedent.setSueldo(datofloat);
+                                        }catch (Exception e) {
+                                            System.out.println("\nSeleccione correctamente\n");
+                                            sc.nextLine();
+                                        }//fin del try catch
+                                        sc.nextLine();
+                                        System.out.println("Correo: ");
+                                        datoString = sc.nextLine();
+                                        sc.nextLine();
+                                        intedent.setCorreo(datoString);
+                                        System.out.println("Telefono: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setTelefono(datoString);
+                                        System.out.println("Ocupacion: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setOcupacion(datoString);
+                                        System.out.println("Domicilio: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setDomocilio(datoString);
+                                        System.out.println("CURP: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setCurp(datoString);
+                                        sc.nextLine();
+                                        System.out.println("IMMS: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setImss(datoString);
+                                        sc.nextLine();
+                                        System.out.println("RFC: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setRfc(datoString);
+                                        sc.nextLine();
+                                        System.out.println("Sexo ('H' o 'M'): ");
+                                        datoChar = sc.next().charAt(0);
+                                        intedent.setSexo(datoChar);
+                                        sc.nextLine();
+                                        System.out.println("Estado Civil: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setEstadocivil(datoString);
+                                        System.out.println("Profesion: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setProfesion(datoString);
+                                        System.out.println("Area: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setArea(datoString);
+                                        System.out.println("Horario: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setHorario(datoString);
+                                        System.out.println("Puesto: ");
+                                        datoString = sc.nextLine();
+                                        intedent.setPuesto(datoString);
+                                    }else if(option == 2){
+                                        for (Intendente intedent : listadeintendentes){ //Inicio de for de arrayList
+                                        System.out.println("Nombre: " +  intedent.getName() + ", Edad: " +  intedent.getEdad() + ", Codigo: " + intedent.getCodigo()
+                                        +", Correo: "+ intedent.getCorreo()+ ", Sexo: " +  intedent.getSexo() + ", Telefono: " +  intedent.getTelefono() + ", Domicilio: " +  intedent.getDomocilio()
+                                        + ", CURP: " +  intedent.getCurp() + ", IMSS: " +  intedent.getImss() + ", Ocupacion: "+ intedent.getOcupacion()
+                                        +", Estado civil: "+ intedent.getEstadocivil()+",Sueldo: "+ intedent.getSueldo()+", Profesion: "+ intedent.getProfesion()
+                                        +", Area: "+ intedent.getArea()+", Horacion: "+ intedent.getHorario()+", Puesto: "+ intedent.getPuesto());
+                                        } //Fin de for de ArrayList
+                                    }else{
+                                        System.out.println("\nVolvera al meunu");
+                                    }//fin del else
                                 }//fin del while
                                 break;
                             case 3:
+                                option = 0;
+                                while(option !=3){
+                                    System.out.println("\n1) Ingresar datos");
+                                    System.out.println("2) Mostrar secretaria/s");
+                                    System.out.println("3) Salir");
+                                    System.out.println("Opcion: ");
+                                    //se encarga de validar si se esta ingresando el valor 
+                                    //del rango establecido correctamente
+                                    try {
+                                        option = sc.nextInt();
+                                        sc.nextLine();
+                                    } catch (Exception e) {
+                                        System.out.println("\nSeleccione correctamente\n");
+                                    }//fin del try catch
+                                    if(option == 1){
+                                        Secretarios secretaria = new Secretarios("",0,"","","","");
+                                        sc.nextLine();
+                                        
+                                        System.out.println("Ingresa nombre: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setName(datoString);
+                                        System.out.println("");
+                                        //se encarga de validar si se esta ingresando el valor 
+                                        //del rango establecido correctamente
+                                        try{
+                                            System.out.println("Codigo: ");
+                                            cod = sc.nextInt();
+                                            secretaria.setCodigo(cod);
+                                            System.out.println("Edad: ");
+                                            ed = sc.nextByte();
+                                            secretaria.setEdad(ed);
+                                            System.out.println("Sueldo: ");
+                                            datofloat = sc.nextFloat();
+                                            secretaria.setSueldo(datofloat);
+                                        }catch (Exception e) {
+                                            System.out.println("\nSeleccione correctamente\n");
+                                            sc.nextLine();
+                                        }//fin del try catch
+                                        sc.nextLine();
+                                        System.out.println("Correo: ");
+                                        datoString = sc.nextLine();
+                                        sc.nextLine();
+                                        secretaria.setCorreo(datoString);
+                                        System.out.println("Telefono: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setTelefono(datoString);
+                                        System.out.println("Ocupacion: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setOcupacion(datoString);
+                                        System.out.println("Domicilio: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setDomocilio(datoString);
+                                        System.out.println("CURP: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setCurp(datoString);
+                                        sc.nextLine();
+                                        System.out.println("IMMS: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setImss(datoString);
+                                        sc.nextLine();
+                                        System.out.println("RFC: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setRfc(datoString);
+                                        sc.nextLine();
+                                        System.out.println("Sexo ('H' o 'M'): ");
+                                        datoChar = sc.next().charAt(0);
+                                        secretaria.setSexo(datoChar);
+                                        sc.nextLine();
+                                        System.out.println("Estado Civil: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setEstadocivil(datoString);
+                                        System.out.println("Profesion: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setProfesion(datoString);
+                                        System.out.println("Oficina: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setOficina(datoString);
+                                        System.out.println("Horario: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setHorario(datoString);
+                                        System.out.println("Puesto: ");
+                                        datoString = sc.nextLine();
+                                        secretaria.setPuesto(datoString);
+                                    }else if(option == 2){
+                                        for (Secretarios secretaria : listadesecretarios){ //Inicio de for de arrayList
+                                        System.out.println("Nombre: " +  secretaria.getName() + ", Edad: " +  secretaria.getEdad() + ", Codigo: " + secretaria.getCodigo()
+                                        +", Correo: "+ secretaria.getCorreo()+ ", Sexo: " +  secretaria.getSexo() + ", Telefono: " +  secretaria.getTelefono() + ", Domicilio: " +  secretaria.getDomocilio()
+                                        + ", CURP: " +  secretaria.getCurp() + ", IMSS: " +  secretaria.getImss() + ", Ocupacion: "+ secretaria.getOcupacion()
+                                        +", Estado civil: "+ secretaria.getEstadocivil()+",Sueldo: "+ secretaria.getSueldo()+", Profesion: "+ secretaria.getProfesion()
+                                        +", Oficina: "+ secretaria.getOficina()+", Horacion: "+ secretaria.getHorario()+", Puesto: "+ secretaria.getPuesto());
+                                        } //Fin de for de ArrayList
+                                    }else{
+                                        System.out.println("\nVolvera al meunu");
+                                    }//fin del else
+                                }//fin del while    
                                 break;
                             case 4:
                                     System.out.println("Volvera al menu");
