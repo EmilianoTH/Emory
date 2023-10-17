@@ -5,7 +5,7 @@
  * Centro Universitario de los Altos | Universidad de Guadalajara
  * Ingenieria en computacion
  * Profesor: Sergio Franco Casillas
- * Descripcion: 
+ * Descripcion: un repositorio donde se guarda los datos de los arraylist
  */
 package repositoriom;
 import java.util.Scanner;
@@ -141,7 +141,7 @@ public class RepositorioM {
                                 init3 = true; //Se vuelve a igualar a true para usarlo a continuacion
                                 sc.nextLine();
                                 
-                                for(int i =0; i <nmaterias; i++){
+                                for(int i =0; i < nmaterias; i++){
                                     System.out.println("Materia: ");
                                     datoString = sc.nextLine();
                                     alumno.setMaterias(i,datoString);
@@ -167,7 +167,10 @@ public class RepositorioM {
                                     sc.nextLine();
                                 }//fin del for
                                 //valida que ha metido los datos de forma correcta
-                                if (cod != 0 && datoChar != ' ' && datoString != "" && ed != 0){
+                                if ((cod != 0 && datoChar != ' ' && datoString != "" && ed != 0)&&(alumno.getCurp() != "" 
+                                    && alumno.getImss() != "" && alumno.getSexo() != ' ' && alumno.getPaga() != ' ' && 
+                                    alumno.getCorreo() != "" && alumno.getTelefono() != "" && alumno.getOcupacion() != "" 
+                                    && alumno.getDomocilio() != "")){
                                     listadealumnos.add(alumno);
                                 }//fin de if que valida
                             }else if(option == 2){
@@ -176,11 +179,13 @@ public class RepositorioM {
                                     +", Correo: "+alumno.getCorreo()+ ", Sexo: " + alumno.getSexo() + ", Telefono: " + alumno.getTelefono() + ", Domicilio: " + alumno.getDomocilio()
                                     + ", CURP: " + alumno.getCurp() + ", IMSS: " + alumno.getImss() + ", Ocupacion: "+alumno.getOcupacion()
                                     +", Estado civil: "+alumno.getEstadocivil()+", paga: "+alumno.getPaga()+", Salon: "+alumno.getSalon());
-                                 for (int i = 0; i < nmaterias; i++) { //Otro for para mostrar arreglos
-                                    System.out.println("Materia " + (i + 1) + ": " + alumno.getMaterias(i) + ", Promedio: " + alumno.getPromedio(i)+ ", Horario: "+alumno.getHorario(i));
+                                 for (int j = 0; j < nmaterias; j++) { //Otro for para mostrar arreglos
+                                    System.out.println("Materia " + (j + 1) + ": " + alumno.getMaterias(j) + ", Promedio: " + alumno.getPromedio(j)+ ", Horario: "+alumno.getHorario(j));
                                     System.out.println("Salon: "+alumno.getSalon());
                                 } //Fin de for para mostrar arreglos
+                                 alumno.accion();
                                 } //Fin de for de ArrayList
+                                sc.nextLine();
                             }else {
                                 System.out.println("Volvera al menu");
                             }//fin del else
@@ -221,7 +226,7 @@ public class RepositorioM {
                                     }//fin del try catch
                                     //si la opcion es uni
                                     if(option == 1){
-                                        Docentes docente = new Docentes(15,"","","",0,"","","","");
+                                        Docentes docente = new Docentes(15, "", "", 0, "", "", "", "", "", 0, "", (byte)0, ' ', "", "", "", "", "","");
                                         sc.nextLine();
                                         
                                         System.out.println("Ingresa nombre: ");
@@ -280,17 +285,75 @@ public class RepositorioM {
                                         System.out.println("Profesion: ");
                                         datoString = sc.nextLine();
                                         docente.setProfesion(datoString);
-                                        //falta el cubiculo, materias, asignacion y no se que mas
+                                        System.out.println("Categoria (Tiempo completo[TL] o por horas[H]): ");
+                                        datoString = sc.nextLine();
+                                        docente.setCategoria(datoString);
+                                        if (docente.getCategoria() == "TL" && docente.getCategoria() == "Tiempo completo") {
+                                            System.out.print("Escriba cual es su cubiculo: ");
+                                            datoString = sc.nextLine();
+                                            docente.setCubiculo(datoString);
+                                        } //Fin del if que verifica si el profesor tiene cubiculo
+                                        System.out.print("Puesto:  ");
+                                        datoString = sc.nextLine();
+                                        docente.setPuesto(datoString);
+                                        System.out.println("Horario: ");
+                                        datoString = sc.nextLine();
+                                        docente.setHorario(datoString);
+                                        sc.nextLine();
+                                        
+                                        //comienzos para meter materia
+                                        while(init3){
+                                            try{
+                                                System.out.print("Cantidad de materias(1-15): ");
+                                                nmaterias = sc.nextInt();
+                                            if (nmaterias > 0 && nmaterias < 16) 
+                                                init3 = false;
+                                            else{
+                                                System.out.println("Numero fuera del rango permitido");
+                                            }//fin del else if
+                                            } catch(Exception e){
+                                                System.out.println("Error");
+                                                sc.nextLine();
+                                            }//fin del try-cathc
+                                        }//fin del while
+                                        init3 = true; //Se vuelve a igualar a true para usarlo a continuacion
+                                        sc.nextLine();
+                                        
+                                        //ingresa las materias
+                                        for(int i =0; i < nmaterias; i++){
+                                            System.out.println("Materia: ");
+                                            datoString = sc.nextLine();
+                                            docente.setMaterias(i,datoString);
+                                            sc.nextLine();
+                                        }//fin del for
+                                        
+                                        //si los valores no son diferentes de cero
+                                        if ((cod != 0 && datoChar != ' ' && datoString != "" && ed != 0)&&(docente.getName() != "" 
+                                            && docente.getCodigo() != 0 && docente.getEdad() != 0 && docente.getCorreo() != "" && docente.getTelefono() != "" 
+                                            && docente.getOcupacion() != "" && docente.getDomocilio() != "" && docente.getCurp() != "" && docente.getImss() != "" 
+                                            && docente.getSexo() != ' ' && docente.getCategoria() != "" && docente.getPuesto() != "" && docente.getProfesion() != "" && docente.getHorario() != ""
+                                            && docente.getRfc() != "" && docente.getSueldo() != 0))
+                                        {
+                                            listadedocentes.add(docente);
+                                        }//fin de if que valida
                                     }else if(option == 2){
+                                        //ArrayList
                                         for (Docentes docente : listadedocentes){ //Inicio de for de arrayList
                                             System.out.println("Nombre: " + docente.getName() + ", Edad: " + docente.getEdad() + ", Codigo: " + docente.getCodigo()
                                             +", Correo: "+docente.getCorreo()+ ", Sexo: " + docente.getSexo() + ", Telefono: " + docente.getTelefono() + ", Domicilio: " + docente.getDomocilio()
                                             + ", CURP: " + docente.getCurp() + ", IMSS: " + docente.getImss() + ", Ocupacion: "+docente.getOcupacion()
-                                            +", Estado civil: "+docente.getEstadocivil()+", Profesion: "+docente.getProfesion()+", Sueldo: "+docente.getSueldo());
-                                        for (int i = 0; i < nmaterias; i++) { //Otro for para mostrar arreglos
-                                            //System.out.println("Materia " + (i + 1) + ": " + docente.getMaterias(i) + ", Horario: "+docente.getHorario(i));
+                                            +", Estado civil: "+docente.getEstadocivil()+", Profesion: "+docente.getProfesion()+", Sueldo: "+docente.getSueldo()+", Puesto: "+docente.getPuesto()
+                                            +", Categoria: "+docente.getCategoria());
+                                        //si la categoria es tiempo completo
+                                            if(docente.getCategoria() == "TL" || docente.getCategoria() == "Tiempo completo")
+                                                System.out.println("Cubiculo: "+ docente.getCubiculo());
+                                            //ejecuta las materias asignadas 
+                                            for (int i = 0; i < nmaterias; i++) { //Otro for para mostrar arreglos
+                                                System.out.println("Materia " + (i + 1) + ": " + docente.getMaterias(i));
                                             } //Fin de for para mostrar arreglos
+                                        docente.accion();
                                         } //Fin de for de ArrayList
+                                        sc.nextLine();
                                     }else{
                                         System.out.println("\nVolvera al menu");
                                     }//fin del else
@@ -298,6 +361,7 @@ public class RepositorioM {
                                 break;
                             case 2:
                                 option = 0;
+                                //ejecuta el codigo hasta su fin
                                 while(option !=3){
                                     System.out.println("\n1) Ingresar datos");
                                     System.out.println("2) Mostrar Indentente/s");
@@ -312,7 +376,7 @@ public class RepositorioM {
                                         System.out.println("\nSeleccione correctamente\n");
                                     }//fin del try catch
                                     if(option == 1){
-                                        Intendente intedent = new Intendente("",0,"","","","");
+                                        Intendente intedent = new Intendente("", 0, "", "", "", "", "", 0, "", (byte)0, ' ', "", "", "", "", "","");
                                         sc.nextLine();
                                         
                                         System.out.println("Ingresa nombre: ");
@@ -380,6 +444,14 @@ public class RepositorioM {
                                         System.out.println("Puesto: ");
                                         datoString = sc.nextLine();
                                         intedent.setPuesto(datoString);
+                                        if ((cod != 0 && datoChar != ' ' && datoString != "" && ed != 0)&& 
+                                            (intedent.getName() != "" && intedent.getCodigo() != 0 && intedent.getEdad() != 0 && 
+                                            intedent.getCorreo() != "" && intedent.getTelefono() != "" && intedent.getOcupacion() 
+                                            != "" && intedent.getDomocilio() != "" && intedent.getCurp() !="" && intedent.getImss() != "" 
+                                            && intedent.getPuesto() != "" && intedent.getProfesion() != "" && intedent.getHorario() != ""
+                                            && intedent.getRfc() != "" && intedent.getSueldo() != 0)){
+                                            listadeintendentes.add(intedent);
+                                        }//fin de if que valida
                                     }else if(option == 2){
                                         for (Intendente intedent : listadeintendentes){ //Inicio de for de arrayList
                                         System.out.println("Nombre: " +  intedent.getName() + ", Edad: " +  intedent.getEdad() + ", Codigo: " + intedent.getCodigo()
@@ -387,7 +459,10 @@ public class RepositorioM {
                                         + ", CURP: " +  intedent.getCurp() + ", IMSS: " +  intedent.getImss() + ", Ocupacion: "+ intedent.getOcupacion()
                                         +", Estado civil: "+ intedent.getEstadocivil()+",Sueldo: "+ intedent.getSueldo()+", Profesion: "+ intedent.getProfesion()
                                         +", Area: "+ intedent.getArea()+", Horacion: "+ intedent.getHorario()+", Puesto: "+ intedent.getPuesto());
+                                        
+                                        intedent.accion();
                                         } //Fin de for de ArrayList
+                                        sc.nextLine();
                                     }else{
                                         System.out.println("\nVolvera al meunu");
                                     }//fin del else
@@ -409,7 +484,7 @@ public class RepositorioM {
                                         System.out.println("\nSeleccione correctamente\n");
                                     }//fin del try catch
                                     if(option == 1){
-                                        Secretarios secretaria = new Secretarios("",0,"","","","");
+                                        Secretarios secretaria = new Secretarios("", 0, "", "", "", "", "", 0, "", (byte)0, ' ', "", "", "", "", "","");
                                         sc.nextLine();
                                         
                                         System.out.println("Ingresa nombre: ");
@@ -477,14 +552,28 @@ public class RepositorioM {
                                         System.out.println("Puesto: ");
                                         datoString = sc.nextLine();
                                         secretaria.setPuesto(datoString);
+                                        //si los datos no son iguales a cero
+                                        if ((cod != 0 && datoChar != ' ' && datoString != "" && ed != 0)&&
+                                           (secretaria.getName() != "" && secretaria.getCodigo() != 0 && secretaria.getEdad() != 0 &&
+                                           secretaria.getCorreo() != "" && secretaria.getTelefono() != "" && secretaria.getOcupacion() 
+                                           != "" && secretaria.getDomocilio() != "" && secretaria.getCurp() != "" && secretaria.getImss() 
+                                           != "" && secretaria.getSexo() != ' ' && secretaria.getOficina() != "" && secretaria.getPuesto() 
+                                           != "" && secretaria.getProfesion() != "" && secretaria.getHorario() != ""
+                                           && secretaria.getRfc() != "" && secretaria.getSueldo() != 0)){
+                                           listadesecretarios.add(secretaria);
+                                        }//fin de if que valida
                                     }else if(option == 2){
+                                        //ingreesa el array con los datos del alumno/s
                                         for (Secretarios secretaria : listadesecretarios){ //Inicio de for de arrayList
                                         System.out.println("Nombre: " +  secretaria.getName() + ", Edad: " +  secretaria.getEdad() + ", Codigo: " + secretaria.getCodigo()
                                         +", Correo: "+ secretaria.getCorreo()+ ", Sexo: " +  secretaria.getSexo() + ", Telefono: " +  secretaria.getTelefono() + ", Domicilio: " +  secretaria.getDomocilio()
                                         + ", CURP: " +  secretaria.getCurp() + ", IMSS: " +  secretaria.getImss() + ", Ocupacion: "+ secretaria.getOcupacion()
                                         +", Estado civil: "+ secretaria.getEstadocivil()+",Sueldo: "+ secretaria.getSueldo()+", Profesion: "+ secretaria.getProfesion()
                                         +", Oficina: "+ secretaria.getOficina()+", Horacion: "+ secretaria.getHorario()+", Puesto: "+ secretaria.getPuesto());
+                                        
+                                        secretaria.accion();
                                         } //Fin de for de ArrayList
+                                        sc.nextLine();
                                     }else{
                                         System.out.println("\nVolvera al meunu");
                                     }//fin del else
