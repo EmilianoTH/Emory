@@ -26,13 +26,13 @@ public class Docentes extends Trabajadores{
     }
 
     public void setCategoria(String categoria) {
-        if(categoria.matches("[\\w]+"))this.categoria = categoria;
-        else System.out.println("No deje el espacio en blanco");
+        if(categoria.matches("[\\w\\s]+"))this.categoria = categoria;
+        else throw new IllegalArgumentException("No deje el espacio en blanco de categoria");
     }
 
     public void setCubiculo(String cubiculo) {
-        if(cubiculo.matches("[\\w]+"))this.cubiculo = cubiculo;
-        else System.out.println("No deje el espacio en blanco");
+        if(cubiculo.matches("[\\w\\d-]+"))this.cubiculo = cubiculo;
+        else throw new IllegalArgumentException("No deje el espacio en blanco de cubiculo");
     }
     
     /* Getters */
@@ -55,21 +55,21 @@ public class Docentes extends Trabajadores{
     public void setImss(String imss) {
         //Valida que solo meta de entrada 11 digitos
         if(imss.matches("\\d{11}") || imss == "11Digitos") super.setImss(imss);
-        else System.out.println("Ingrese un numero de 11 digitos\nSi su numero de IMSS cuenta con mas de 11 digitos, escriba exactamente igual la frase '11Digitos'");
+        else throw new IllegalArgumentException ("Ingrese un numero de 11 digitos\nSi su numero de IMSS cuenta con mas de 11 digitos, escriba exactamente igual la frase '11Digitos'");
     }
 
     @Override
     public void setCurp(String curp) {
         //Valida que se meta una entrada correcta de CURP
         if(curp.matches("[\\dA-Z]+")) super.setCurp(curp);
-        else System.out.println("Ingresa de forma correcta el formato de su CURP\nNo escriba minusculas");
+        else throw new IllegalArgumentException("Ingresa de forma correcta el formato de su CURP\nNo escriba minusculas");
     }
 
     @Override
     public void setDomicilio(String domicilio) {
         //Valida que se meta una entrada correcta de domicilio
         if(domicilio.matches("[\\d\\wÁÉÍÓÚáéíóú\\s#]+#.*")) super.setDomicilio(domicilio);
-        else System.out.println("Recuerda que el domicilio debe llevar un '#'");
+        else throw new IllegalArgumentException("Recuerda que el domicilio debe llevar un '#'");
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Docentes extends Trabajadores{
     public void setTelefono(String telefono) {
         //Valida que solo meta de entrada 10 digitos
         if(telefono.matches("\\d{10}")) super.setTelefono(telefono);
-        else System.out.println("Ingrese solamente un numero de 10 digitos");
+        else throw new IllegalArgumentException("Ingrese solamente un numero de 10 digitos");
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Docentes extends Trabajadores{
         if(sexo == 'M' || sexo == 'H' || sexo == 'm' || sexo == 'h')
             super.setSexo(sexo);
         else 
-            System.out.println("Elija un sexo correcto");
+            throw new IllegalArgumentException("Elija un sexo correcto");
     }
 
     @Override
@@ -99,26 +99,26 @@ public class Docentes extends Trabajadores{
         if(edad > 10 && edad < 110)
             super.setEdad(edad);
         else
-            System.out.println("Escriba una edad mayor a 10 años\nEstas en una universidad por dios");
+            throw new IllegalArgumentException("Escriba una edad mayor a 10 años\nEstas en una universidad por dios");
     }
 
     @Override
     public void setCorreo(String correo) {
         //Valida que meta una entrada valida de correo
         if(correo.matches("[a-z.]+@.*")) super.setCorreo(correo);
-        else System.out.println("Formato de correo invalido\nRevisa los '.' o los '@'\nRecuerda que todo debe estar en minusculas sin acentos");
+        else throw new IllegalArgumentException("Formato de correo invalido\nRevisa los '.' o los '@'\nRecuerda que todo debe estar en minusculas sin acentos");
     }
 
     @Override
     public void setCodigo(int codigo) {
         if(codigo != 0)super.setCodigo(codigo);
-        else System.out.println("Escriba bien el codigo");
+        else throw new IllegalArgumentException("Escriba bien el codigo");
     }
 
     @Override
     public void setName(String name) {
         if(name.matches("[A-Za-zÁÉÍÓÚáéíóú\\s']+"))super.setName(name); 
-        else System.out.println("¿Apoco tu nombre lleva numeros o cosas raras?\n¿O no tienes nombre?");
+        else throw new IllegalArgumentException("¿Apoco tu nombre lleva numeros o cosas raras?\n¿O no tienes nombre?");
     }
 
     @Override
@@ -199,40 +199,32 @@ public class Docentes extends Trabajadores{
     
     @Override
     public void setPuesto(String puesto) {
-        if(puesto.matches("[\\d\\w]+"))super.setProfesion(puesto);
-        else System.out.println("No deje el espacio en blanco");
+        if(puesto.matches("[\\d\\w]+"))super.setPuesto(puesto);
+        else throw new IllegalArgumentException("No deje el espacio en blanco");
     }
 
     @Override
     public void setProfesion(String profesion) {
         if(profesion.matches("[\\w]+"))super.setProfesion(profesion);
-        else System.out.println("No deje el espacio en blanco");
+        else throw new IllegalArgumentException("No deje el espacio en blanco");
     }
 
     @Override
     public void setHorario(String horario) {
-        if(horario.matches("[\\w]+"))super.setProfesion(horario);
-        else System.out.println("No deje el espacio en blanco");
+        if(horario.matches("[\\w\\d-:\\s]+"))super.setHorario(horario);
+        else throw new IllegalArgumentException("No deje el espacio en blanco");
     }
 
     @Override
     public void setRfc(String rfc) {
-        if(rfc.matches("[\\d\\w]+"))super.setRfc(rfc);
-        else System.out.println("Escriba de forma correcta el formato de su RFC");
+        if(rfc.matches("[\\dA-Z]+"))super.setRfc(rfc);
+        else throw new IllegalArgumentException("Escriba de forma correcta el formato de su RFC");
     }
 
     @Override
     public void setSueldo(float sueldo) {
-        if(sueldo < 1000 ){
-            super.setSueldo(sueldo);
-            System.out.println("Espero que al menos el sueldo sea semanal");
-        } 
-        if (sueldo < 500) {
-            super.setSueldo(sueldo);
-            System.out.println("Ya mejor cambia de trabajo");
-        }
-        if (sueldo > 0 && sueldo > 1000)super.setSueldo(sueldo);
-        
+        if (sueldo > 0 && sueldo < 1000000)super.setSueldo(sueldo);
+        else throw new IllegalArgumentException("No escriba sueldos negativos ni tampoco imposibles");
     }
 
     @Override
