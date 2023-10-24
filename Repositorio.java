@@ -60,9 +60,14 @@ public class Repositorio {
                                     Alumnos alumno = new Alumnos(' ', 15, "", "", 0, "", (byte)0, ' ', "", "", "", "", "");
                                     leer.nextLine();
                                     while(init5){ //While que no le permita pasar hasta poner bien los datos
-                                    System.out.print("Escribe el nombre: ");
-                                    datoString = leer.nextLine();
-                                    alumno.setName(datoString);
+                                        try{ //Principio del Trycatch principal
+                                            System.out.print("Escribe el nombre: ");
+                                            datoString = leer.nextLine();
+                                            alumno.setName(datoString);
+                                        } catch (Exception e){
+                                            System.out.println(e);
+                                        } //Fin del try catch principal
+                                    
                                         
                                     try{ //Trycatch para meter datos enteros sin problema //Son necesarios 2 trycatch o un while, arreglo pendiente
                                         System.out.print("Escribe el codigo: ");
@@ -84,19 +89,24 @@ public class Repositorio {
                                     init5 = true;
                                     
                                     while(init5){
-                                        System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
-                                        datoString = leer.next();
-                                        alumno.setCorreo(datoString);
-                                        System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
-                                        datoString = leer.next();
-                                        alumno.setTelefono(datoString);
-                                        leer.nextLine(); //Nextline necerio para que agarre la ocupacion
-                                        System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
-                                        datoString = leer.nextLine();
-                                        alumno.setOcupacion(datoString);
-                                        System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
-                                        datoString = leer.nextLine();
-                                        alumno.setDomicilio(datoString);
+                                        try{ //Principio del Trycatch principal
+                                            System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
+                                            datoString = leer.next();
+                                            alumno.setCorreo(datoString);
+                                            System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
+                                            datoString = leer.next();
+                                            alumno.setTelefono(datoString);
+                                            leer.nextLine(); //Nextline necerio para que agarre la ocupacion
+                                            System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
+                                            datoString = leer.nextLine();
+                                            alumno.setOcupacion(datoString);
+                                            System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
+                                            datoString = leer.nextLine();
+                                            alumno.setDomicilio(datoString);
+                                        } catch (Exception e){
+                                            System.out.println(e);
+                                        } //Fin del try catch principal
+                                        
                                         
                                         if (alumno.getCorreo() != "" && alumno.getTelefono() != "" && alumno.getOcupacion() != "" && alumno.getDomicilio() != "") 
                                             init5 = false;
@@ -105,19 +115,24 @@ public class Repositorio {
                                     init5 = true;
                                     
                                     while(init5){
-                                        System.out.print("Escribe tu CURP: ");
-                                        datoString = leer.nextLine();
-                                        alumno.setCurp(datoString);
-                                        System.out.print("Escribe tu imss: ");
-                                        datoString = leer.nextLine();
-                                        alumno.setImss(datoString);
-                                        System.out.print("Escribe tu sexo ('H' o 'M'): ");
-                                        datochar = leer.next().charAt(0);
-                                        alumno.setSexo(datochar);
-                                        System.out.print("El alumno ha pagado el semestre (Yes[Y] o No[N]): ");
-                                        datochar = leer.next().charAt(0);
-                                        alumno.setPaga(datochar);
-                                        leer.nextLine();
+                                        try{ //Principio del Trycatch principal
+                                            System.out.print("Escribe tu CURP: ");
+                                            datoString = leer.next();
+                                            alumno.setCurp(datoString);
+                                            System.out.print("Escribe tu imss: ");
+                                            datoString = leer.next();
+                                            alumno.setImss(datoString);
+                                            System.out.print("Escribe tu sexo ('H' o 'M'): ");
+                                            datochar = leer.next().charAt(0);
+                                            alumno.setSexo(datochar);
+                                            System.out.print("El alumno ha pagado el semestre (Yes[Y] o No[N]): ");
+                                            datochar = leer.next().charAt(0);
+                                            alumno.setPaga(datochar);
+                                            leer.nextLine();
+                                        } catch (Exception e){
+                                            System.out.println(e);
+                                        } //Fin del try catch principal
+                                        
                                         
                                         if (alumno.getCurp() != "" && alumno.getImss() != "" && alumno.getSexo() != ' ' && alumno.getPaga() != ' ')
                                             init5 = false;
@@ -126,9 +141,14 @@ public class Repositorio {
                                     init5 = true;
                                     
                                     while(init5){
-                                        System.out.print("Escribe el salon en el que estudiará el alumno: ");
-                                        datoString = leer.nextLine();
-                                        alumno.setSalon(datoString);
+                                        try{ //Principio del Trycatch principal
+                                            System.out.print("Escribe el salon en el que estudiará el alumno: ");
+                                            datoString = leer.nextLine();
+                                            alumno.setSalon(datoString);
+                                        } catch (Exception e){
+                                            System.out.println(e);
+                                        } //Fin del try catch principal
+                                        
 
                                         //Comienzos para meter Materias con promedio y salon//
                                         while(init3){
@@ -150,12 +170,17 @@ public class Repositorio {
                                         leer.nextLine();
                                         //For para meter materias y demas
                                             for (int j = 0; j < numMaterias; j++) { 
-                                                System.out.print("Escribe la materia: ");
-                                                datoString = leer.nextLine();
-                                                alumno.setMaterias(j, datoString);
-                                                System.out.print("Escribe el horario de esa materia: ");
-                                                datoString = leer.nextLine();
-                                                alumno.setHorario(j, datoString);
+                                                try{ //Principio del Trycatch principal
+                                                    System.out.print("Escribe la materia: ");
+                                                    datoString = leer.nextLine();
+                                                    alumno.setMaterias(j, datoString);
+                                                    System.out.print("Escribe el horario de esa materia: ");
+                                                    datoString = leer.nextLine();
+                                                    alumno.setHorario(j, datoString);
+                                                } catch (Exception e){
+                                                    System.out.println(e);
+                                                } //Fin del try catch principal
+                                                
                                                 while(init3){
                                                     try{
                                                     System.out.print("Escribe el promedio del alumno en la materia correspondiente: ");
@@ -166,7 +191,7 @@ public class Repositorio {
                                                         System.out.println("Escriba un promedio veridico (0 - 100)");
                                                     }
                                                     } catch(Exception e){
-                                                        System.out.println("Error, numero invalido");
+                                                        System.out.println(e);
                                                         leer.nextLine();
                                                     }
                                                 } //Fin del while 3 dentro del for
@@ -214,6 +239,7 @@ public class Repositorio {
                                 init5 = true;
 
                                 } //Fin de while 2
+                                init2 = true;
                                 
                                 break;
                                 
@@ -247,6 +273,8 @@ public class Repositorio {
                         } //Submenu del caso A
                     } //Fin de while 4
                     init4 = true;
+                    
+                break; //Break de alumnos
                 
                 case "T": case "t": //Case T del segundo swithc
                     while(init4){
@@ -274,9 +302,14 @@ public class Repositorio {
                                             Docentes docente = new Docentes(15, "", "", 0, "", "", "", "", "", 0, "", (byte)0, ' ', "", "", "", "", "");
                                             leer.nextLine();
                                             while(init5){ //While que no le permita pasar hasta poner bien los datos
-                                            System.out.print("Escribe el nombre: ");
-                                            datoString = leer.nextLine();
-                                            docente.setName(datoString);
+                                                try{ //Principio del Trycatch principal
+                                                    System.out.print("Escribe el nombre: ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setName(datoString);
+                                                } catch (Exception e){
+                                                    System.out.println(e);
+                                                } //Fin del try catch principal
+                                            
 
                                             try{ //Trycatch para meter datos enteros sin problema //Son necesarios 2 trycatch o un while, arreglo pendiente
                                                 System.out.print("Escribe el codigo: ");
@@ -298,19 +331,24 @@ public class Repositorio {
                                             init5 = true;
 
                                             while(init5){
-                                                System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
-                                                datoString = leer.next();
-                                                docente.setCorreo(datoString);
-                                                System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
-                                                datoString = leer.next();
-                                                docente.setTelefono(datoString);
-                                                leer.nextLine(); //Nextline necerio para que agarre la ocupacion
-                                                System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
-                                                datoString = leer.nextLine();
-                                                docente.setOcupacion(datoString);
-                                                System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
-                                                datoString = leer.nextLine();
-                                                docente.setDomicilio(datoString);
+                                                try{ //Principio del Trycatch principal
+                                                    System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
+                                                    datoString = leer.next();
+                                                    docente.setCorreo(datoString);
+                                                    System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
+                                                    datoString = leer.next();
+                                                    docente.setTelefono(datoString);
+                                                    leer.nextLine(); //Nextline necerio para que agarre la ocupacion
+                                                    System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setOcupacion(datoString);
+                                                    System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setDomicilio(datoString);
+                                                } catch (Exception e){
+                                                    System.out.println(e);
+                                                } //Fin del try catch principal
+                                                
 
                                                 if (docente.getCorreo() != "" && docente.getTelefono() != "" && docente.getOcupacion() != "" && docente.getDomicilio() != "") 
                                                     init5 = false;
@@ -319,48 +357,60 @@ public class Repositorio {
                                             init5 = true;
 
                                             while(init5){
-                                                System.out.print("Escribe tu CURP: ");
-                                                datoString = leer.nextLine();
-                                                docente.setCurp(datoString);
-                                                System.out.print("Escribe tu imss: ");
-                                                datoString = leer.nextLine();
-                                                docente.setImss(datoString);
-                                                System.out.print("Escribe tu sexo ('H' o 'M'): ");
-                                                datochar = leer.next().charAt(0);
-                                                docente.setSexo(datochar);
-                                                System.out.print("Escriba su categoria como maestro(Tiempo completo[TL] o por horas[H]): ");
-                                                datoString = leer.nextLine();
-                                                docente.setCategoria(datoString);
-                                                if (docente.getCategoria() == "TL" || docente.getCategoria() == "Tiempo completo") {
-                                                    System.out.print("Escriba cual es su cubiculo: ");
+                                                try{ //Principio del Trycatch principal
+                                                    System.out.print("Escribe tu CURP: ");
                                                     datoString = leer.nextLine();
-                                                    docente.setCubiculo(datoString);
-                                                } //Fin del if que verifica si el profesor tiene cubiculo
+                                                    docente.setCurp(datoString);
+                                                    System.out.print("Escribe tu imss: ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setImss(datoString);
+                                                    System.out.print("Escribe tu sexo ('H' o 'M'): ");
+                                                    datochar = leer.next().charAt(0);
+                                                    leer.nextLine(); // Agregar esta línea para consumir el "enter"
+                                                    docente.setSexo(datochar);
+                                                    System.out.print("Escriba su categoria como maestro(Tiempo completo[TL] o por horas[H]): ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setCategoria(datoString);
+                                                    if (docente.getCategoria().equals("TL") || docente.getCategoria().equals("Tiempo completo")) {
+                                                        System.out.print("Escriba cual es su cubiculo: ");
+                                                        datoString = leer.nextLine();
+                                                        docente.setCubiculo(datoString);
+                                                    } //Fin del if que verifica si el profesor tiene cubiculo
+                                                } catch (Exception e){
+                                                    System.out.println(e);
+                                                } //Fin del try catch principal
+                                                
                                                 
 
-                                                if (docente.getCurp() != "" && docente.getImss() != "" && docente.getSexo() != ' ' && docente.getCategoria() != "")
+                                                if (docente.getCurp() != "" && docente.getImss() != "" && docente.getSexo() != ' ' && docente.getCategoria() != "" && (docente.getCategoria() != "" || docente.getCubiculo() != ""))
                                                     init5 = false;
 
                                             } //Fin del tercer while init5
                                             init5 = true;
                                             
                                             while(init5){
-                                                System.out.print("Escribe tu puesto: ");
-                                                datoString = leer.nextLine();
-                                                docente.setPuesto(datoString);
-                                                System.out.print("Escribe tu profesion: ");
-                                                datoString = leer.nextLine();
-                                                docente.setProfesion(datoString);
-                                                System.out.print("Escribe tu horario: ");
-                                                datoString = leer.nextLine();
-                                                docente.setHorario(datoString);
-                                                System.out.print("Escribe tu RFC: ");
-                                                datoString = leer.nextLine();
-                                                docente.setRfc(datoString);
-                                                System.out.print("Escribe tu sueldo: ");
-                                                datofloat = leer.nextFloat();
-                                                docente.setSueldo(datofloat);
-                                                leer.nextLine();
+                                                try{ //Principio del Trycatch principal
+                                                    System.out.print("Escribe tu puesto: ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setPuesto(datoString);
+                                                    System.out.print("Escribe tu profesion: ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setProfesion(datoString);
+                                                    System.out.print("Escribe tu horario: ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setHorario(datoString);
+                                                    System.out.print("Escribe tu RFC: ");
+                                                    datoString = leer.nextLine();
+                                                    docente.setRfc(datoString);
+                                                    System.out.print("Escribe tu sueldo: ");
+                                                    datofloat = leer.nextFloat();
+                                                    leer.nextLine();
+                                                    docente.setSueldo(datofloat);
+                                                } catch (Exception e){
+                                                    System.out.println(e);
+                                                } //Fin del try catch principal
+                                                
+                                                
                                                 
                                                 if (docente.getPuesto() != "" && docente.getProfesion() != "" && docente.getHorario() != ""
                                                         && docente.getRfc() != "" && docente.getSueldo() != 0)
@@ -374,7 +424,7 @@ public class Repositorio {
                                                 //Comienzos para meter Materias 
                                                 while(init3){
                                                     try{
-                                                        System.out.print("Escribe la cantidad de materias que tendra el alumno(1-15): ");
+                                                        System.out.print("Escribe la cantidad de materias que tendra el docente(1-15): ");
                                                         numMaterias = leer.nextInt();
                                                         if (numMaterias > 0 && numMaterias < 16) 
                                                             init3 = false;
@@ -391,10 +441,14 @@ public class Repositorio {
                                                 leer.nextLine();
                                                 //For para meter materias y demas
                                                     for (int j = 0; j < numMaterias; j++) { 
-                                                        System.out.print("Escribe la materia: ");
-                                                        datoString = leer.nextLine();
-                                                        docente.setMaterias(j, datoString);
-                                                        leer.nextLine();
+                                                        try{ //Principio del Trycatch principal
+                                                            System.out.print("Escribe la materia: ");
+                                                            datoString = leer.nextLine();
+                                                            docente.setMaterias(j, datoString);
+                                                        } catch (Exception e){
+                                                            System.out.println(e);
+                                                        } //Fin del try catch principal
+                                                        
                                                     } //Fin del for
 
                                                 if (numMaterias > 1) {
@@ -412,14 +466,14 @@ public class Repositorio {
 
                                             while(init5){
                                             try{
-                                                System.out.println("¿Quiere guardar al alumno?\nYes = 1\nNo = 2");
+                                                System.out.println("¿Quiere guardar al docente?\nYes = 1\nNo = 2");
                                                 ifopci = leer.nextInt();
                                                 //If que valide que ha metido los datos de forma correcta
                                                     if (ifopci == 1){
                                                         init2 = false;
                                                         init5 = false;
                                                         listadedocentes.add(docente);
-                                                        System.out.println("Alumno Guardado");
+                                                        System.out.println("Docente Guardado");
                                                     } else {//Fin de if que valida
                                                         System.out.println("Entendido");
                                                         init5 = false;
@@ -435,6 +489,7 @@ public class Repositorio {
                                         init5 = true;
 
                                         } //Fin de while 2
+                                        init2 = true;
                                         break;
                                         
                                     case "M": case "m":
@@ -490,9 +545,14 @@ public class Repositorio {
                                                 leer.nextLine();
                                                 
                                                 while(init5){ //While que no le permita pasar hasta poner bien los datos
-                                                System.out.print("Escribe el nombre: ");
-                                                datoString = leer.nextLine();
-                                                Intendentes.setName(datoString);
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe el nombre: ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setName(datoString);
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                
 
                                                 try{ //Trycatch para meter datos enteros sin problema //Son necesarios 2 trycatch o un while, arreglo pendiente
                                                     System.out.print("Escribe el codigo: ");
@@ -514,19 +574,24 @@ public class Repositorio {
                                                 init5 = true;
 
                                                 while(init5){
-                                                    System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
-                                                    datoString = leer.next();
-                                                    Intendentes.setCorreo(datoString);
-                                                    System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
-                                                    datoString = leer.next();
-                                                    Intendentes.setTelefono(datoString);
-                                                    leer.nextLine(); //Nextline necerio para que agarre la ocupacion
-                                                    System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setOcupacion(datoString);
-                                                    System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setDomicilio(datoString);
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
+                                                        datoString = leer.next();
+                                                        Intendentes.setCorreo(datoString);
+                                                        System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
+                                                        datoString = leer.next();
+                                                        Intendentes.setTelefono(datoString);
+                                                        leer.nextLine(); //Nextline necerio para que agarre la ocupacion
+                                                        System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setOcupacion(datoString);
+                                                        System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setDomicilio(datoString);
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                    
 
                                                     if (Intendentes.getCorreo() != "" && Intendentes.getTelefono() != "" && Intendentes.getOcupacion() != "" && Intendentes.getDomicilio() != "") 
                                                         init5 = false;
@@ -535,18 +600,24 @@ public class Repositorio {
                                                 init5 = true;
 
                                                 while(init5){
-                                                    System.out.print("Escribe tu CURP: ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setCurp(datoString);
-                                                    System.out.print("Escribe tu imss: ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setImss(datoString);
-                                                    System.out.print("Escribe tu sexo ('H' o 'M'): ");
-                                                    datochar = leer.next().charAt(0);
-                                                    Intendentes.setSexo(datochar);
-                                                    System.out.print("Escriba su área: ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setArea(datoString);
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe tu CURP: ");
+                                                        datoString = leer.next();
+                                                        Intendentes.setCurp(datoString);
+                                                        System.out.print("Escribe tu imss: ");
+                                                        datoString = leer.next();
+                                                        Intendentes.setImss(datoString);
+                                                        System.out.print("Escribe tu sexo ('H' o 'M'): ");
+                                                        datochar = leer.next().charAt(0);
+                                                        leer.nextLine(); // Agregar esta línea para consumir el "enter"
+                                                        Intendentes.setSexo(datochar);
+                                                        System.out.print("Escriba su área: ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setArea(datoString);
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                    
                                                     
 
 
@@ -557,22 +628,27 @@ public class Repositorio {
                                                 init5 = true;
 
                                                 while(init5){
-                                                    System.out.print("Escribe tu puesto: ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setPuesto(datoString);
-                                                    System.out.print("Escribe tu profesion: ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setProfesion(datoString);
-                                                    System.out.print("Escribe tu horario: ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setHorario(datoString);
-                                                    System.out.print("Escribe tu RFC: ");
-                                                    datoString = leer.nextLine();
-                                                    Intendentes.setRfc(datoString);
-                                                    System.out.print("Escribe tu sueldo: ");
-                                                    datofloat = leer.nextFloat();
-                                                    Intendentes.setSueldo(datofloat);
-                                                    leer.nextLine();
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe tu puesto: ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setPuesto(datoString);
+                                                        System.out.print("Escribe tu profesion: ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setProfesion(datoString);
+                                                        System.out.print("Escribe tu horario: ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setHorario(datoString);
+                                                        System.out.print("Escribe tu RFC: ");
+                                                        datoString = leer.nextLine();
+                                                        Intendentes.setRfc(datoString);
+                                                        System.out.print("Escribe tu sueldo: ");
+                                                        datofloat = leer.nextFloat();
+                                                        Intendentes.setSueldo(datofloat);
+                                                        leer.nextLine();
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                    
 
                                                     if (Intendentes.getPuesto() != "" && Intendentes.getProfesion() != "" && Intendentes.getHorario() != ""
                                                             && Intendentes.getRfc() != "" && Intendentes.getSueldo() != 0)
@@ -584,14 +660,14 @@ public class Repositorio {
 
                                                 while(init5){
                                                 try{
-                                                    System.out.println("¿Quiere guardar al alumno?\nYes = 1\nNo = 2");
+                                                    System.out.println("¿Quiere guardar al intendente?\nYes = 1\nNo = 2");
                                                     ifopci = leer.nextInt();
                                                     //If que valide que ha metido los datos de forma correcta
                                                         if (ifopci == 1){
                                                             init2 = false;
                                                             init5 = false;
                                                             listadeintendente.add(Intendentes);
-                                                            System.out.println("Alumno Guardado");
+                                                            System.out.println("Intendente Guardado");
                                                         } else {//Fin de if que valida
                                                             System.out.println("Entendido");
                                                             init5 = false;
@@ -607,6 +683,7 @@ public class Repositorio {
                                             init5 = true;
 
                                             } //Fin de while 2
+                                            init2 = true;
                                             break;
 
                                         case "M": case "m":
@@ -657,9 +734,14 @@ public class Repositorio {
                                                 leer.nextLine();
                                                 
                                                 while(init5){ //While que no le permita pasar hasta poner bien los datos
-                                                System.out.print("Escribe el nombre: ");
-                                                datoString = leer.nextLine();
-                                                secretario.setName(datoString);
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe el nombre: ");
+                                                        datoString = leer.nextLine();
+                                                        secretario.setName(datoString);
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                
 
                                                 try{ //Trycatch para meter datos enteros sin problema //Son necesarios 2 trycatch o un while, arreglo pendiente
                                                     System.out.print("Escribe el codigo: ");
@@ -681,19 +763,24 @@ public class Repositorio {
                                                 init5 = true;
 
                                                 while(init5){
-                                                    System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
-                                                    datoString = leer.next();
-                                                    secretario.setCorreo(datoString);
-                                                    System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
-                                                    datoString = leer.next();
-                                                    secretario.setTelefono(datoString);
-                                                    leer.nextLine(); //Nextline necerio para que agarre la ocupacion
-                                                    System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setOcupacion(datoString);
-                                                    System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setDomicilio(datoString);
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe el correo(Sin espacios y sin olvidar el @): ");
+                                                        datoString = leer.next();
+                                                        secretario.setCorreo(datoString);
+                                                        System.out.print("Escribe el numero de telefono (Solo 10 digitos): ");
+                                                        datoString = leer.next();
+                                                        secretario.setTelefono(datoString);
+                                                        leer.nextLine(); //Nextline necerio para que agarre la ocupacion
+                                                        System.out.print("Escribe tu ocupacion (En caso de no tener alguna, escribir 'Ninguna'): ");
+                                                        datoString = leer.nextLine();
+                                                        secretario.setOcupacion(datoString);
+                                                        System.out.print("Escribe tu domicilio (Ejemplo Calle Hidalgo #365): ");
+                                                        datoString = leer.nextLine();
+                                                        secretario.setDomicilio(datoString);
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                    
 
                                                     if (secretario.getCorreo() != "" && secretario.getTelefono() != "" && secretario.getOcupacion() != "" && secretario.getDomicilio() != "") 
                                                         init5 = false;
@@ -702,18 +789,24 @@ public class Repositorio {
                                                 init5 = true;
 
                                                 while(init5){
-                                                    System.out.print("Escribe tu CURP: ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setCurp(datoString);
-                                                    System.out.print("Escribe tu imss: ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setImss(datoString);
-                                                    System.out.print("Escribe tu sexo ('H' o 'M'): ");
-                                                    datochar = leer.next().charAt(0);
-                                                    secretario.setSexo(datochar);
-                                                    System.out.print("Escriba su oficina: ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setOficina(datoString);
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe tu CURP: ");
+                                                        datoString = leer.next();
+                                                        secretario.setCurp(datoString);
+                                                        System.out.print("Escribe tu imss: ");
+                                                        datoString = leer.next();
+                                                        secretario.setImss(datoString);
+                                                        System.out.print("Escribe tu sexo ('H' o 'M'): ");
+                                                        datochar = leer.next().charAt(0);
+                                                        leer.nextLine(); // Agregar esta línea para consumir el "enter"
+                                                        secretario.setSexo(datochar);
+                                                        System.out.print("Escriba su oficina: ");
+                                                        datoString = leer.nextLine();
+                                                        secretario.setOficina(datoString);
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                    
                                                     
 
 
@@ -724,22 +817,27 @@ public class Repositorio {
                                                 init5 = true;
 
                                                 while(init5){
-                                                    System.out.print("Escribe tu puesto: ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setPuesto(datoString);
-                                                    System.out.print("Escribe tu profesion: ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setProfesion(datoString);
-                                                    System.out.print("Escribe tu horario: ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setHorario(datoString);
-                                                    System.out.print("Escribe tu RFC: ");
-                                                    datoString = leer.nextLine();
-                                                    secretario.setRfc(datoString);
-                                                    System.out.print("Escribe tu sueldo: ");
-                                                    datofloat = leer.nextFloat();
-                                                    secretario.setSueldo(datofloat);
-                                                    leer.nextLine();
+                                                    try{ //Principio del Trycatch principal
+                                                        System.out.print("Escribe tu puesto: ");
+                                                        datoString = leer.nextLine();
+                                                        secretario.setPuesto(datoString);
+                                                        System.out.print("Escribe tu profesion: ");
+                                                        datoString = leer.nextLine();
+                                                        secretario.setProfesion(datoString);
+                                                        System.out.print("Escribe tu horario: ");
+                                                        datoString = leer.nextLine();
+                                                        secretario.setHorario(datoString);
+                                                        System.out.print("Escribe tu RFC: ");
+                                                        datoString = leer.next();
+                                                        secretario.setRfc(datoString);
+                                                        System.out.print("Escribe tu sueldo: ");
+                                                        datofloat = leer.nextFloat();
+                                                        secretario.setSueldo(datofloat);
+                                                        leer.nextLine();
+                                                    } catch (Exception e){
+                                                        System.out.println(e);
+                                                    } //Fin del try catch principal
+                                                    
 
                                                     if (secretario.getPuesto() != "" && secretario.getProfesion() != "" && secretario.getHorario() != ""
                                                             && secretario.getRfc() != "" && secretario.getSueldo() != 0)
@@ -751,14 +849,14 @@ public class Repositorio {
 
                                                 while(init5){
                                                 try{
-                                                    System.out.println("¿Quiere guardar al alumno?\nYes = 1\nNo = 2");
+                                                    System.out.println("¿Quiere guardar al secretario?\nYes = 1\nNo = 2");
                                                     ifopci = leer.nextInt();
                                                     //If que valide que ha metido los datos de forma correcta
                                                         if (ifopci == 1){
                                                             init2 = false;
                                                             init5 = false;
                                                             listadesecretarios.add(secretario);
-                                                            System.out.println("Alumno Guardado");
+                                                            System.out.println("Secretario Guardado");
                                                         } else {//Fin de if que valida
                                                             System.out.println("Entendido");
                                                             init5 = false;
@@ -774,6 +872,7 @@ public class Repositorio {
                                             init5 = true;
 
                                             } //Fin dek while 2 de secretarios
+                                            init2 = true;
                                             break;
 
                                         case "M": case "m":
