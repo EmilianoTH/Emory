@@ -24,10 +24,10 @@ public class Alumnos extends Personas{
     
     /* Setter */
     public void setPaga(char paga) {
-        if(paga == 'Y' || paga == 'N')
+        if(paga == 'Y' || paga == 'N' || paga == 'y' || paga == 'n')
         this.paga = paga;
         else
-            System.out.println("No escriba mas letras de las que se pide ");
+            throw new IllegalArgumentException("No escriba mas letras de las que se pide ");
     }
 
     public void setMaterias(int index, String materia) {
@@ -36,7 +36,7 @@ public class Alumnos extends Personas{
 
     public void setPromedio(int index, float promedio) {
         if(promedio >= 0 && promedio <= 100)this.promedio[index] = promedio;
-        else System.out.println("Promedio invalido");
+        else throw new IllegalArgumentException("Promedio invalido");
     }
 
     public void setHorario(int index, String horario) {
@@ -125,22 +125,22 @@ public class Alumnos extends Personas{
     @Override
     public void setImss(String imss) {
         //Valida que solo meta de entrada 11 digitos
-        if(imss.matches("\\d{11}")) super.setImss(imss);
-        else throw new IllegalArgumentException("Ingresa un numero de 11 digitos"); //Quitar las illegalArgument porque te sacan del codigo
+        if(imss.matches("\\d{11}") || imss == "11Digitos") super.setImss(imss);
+        else throw new IllegalArgumentException("Ingrese un numero de 11 digitos\nSi su numero de IMSS cuenta con mas de 11 digitos, escriba exactamente igual la frase '11Digitos'");
     }
 
     @Override
     public void setCurp(String curp) {
         //Valida que se meta una entrada correcta de CURP
-        if(curp.matches("[\\d\\w]+")) super.setCurp(curp);
-        else throw new IllegalArgumentException("Ingrese de forma correcta su CURP");
+        if(curp.matches("[\\dA-Z]+")) super.setCurp(curp);
+        else throw new IllegalArgumentException("Ingresa de forma correcta el formato de su CURP\nNo escriba minusculas");
     }
 
     @Override
     public void setDomicilio(String domicilio) {
         //Valida que se meta una entrada correcta de domicilio
-        if(domicilio.matches("[\\d\\w\\s#]+")) super.setDomicilio(domicilio);
-        else throw new IllegalArgumentException("Recuerda escribir tu domicilio con #\nEjemplo: Hidalgo #3333");
+        if(domicilio.matches("[\\d\\wÁÉÍÓÚáéíóú\\s#]+#.*")) super.setDomicilio(domicilio);
+        else throw new IllegalArgumentException("Recuerda que el domicilio debe llevar un '#'");
     }
 
     @Override
@@ -152,42 +152,44 @@ public class Alumnos extends Personas{
     public void setTelefono(String telefono) {
         //Valida que solo meta de entrada 10 digitos
         if(telefono.matches("\\d{10}")) super.setTelefono(telefono);
-        else throw new IllegalArgumentException("Ingresa un numero de 10 digitos");
+        else throw new IllegalArgumentException("Ingrese solamente un numero de 10 digitos");
     }
 
     @Override
     public void setSexo(char sexo) {
         //Valida que meta un sexo correcto
-        if(sexo == 'M' || sexo == 'H')
+        if(sexo == 'M' || sexo == 'H' || sexo == 'm' || sexo == 'h')
             super.setSexo(sexo);
-        else
-            System.out.println("Elija un sexo correcto");
+        else 
+            throw new IllegalArgumentException("Elija un sexo correcto");
     }
 
     @Override
     public void setEdad(byte edad) {
         //Valida que meta una entrada valida de edad
-        if(edad > 15 && edad < 110)
+        if(edad > 10 && edad < 110)
             super.setEdad(edad);
         else
-            System.out.println("Escriba una edad correcta");
+            throw new IllegalArgumentException("Escriba una edad mayor a 10 años\nEstas en una universidad por dios");
     }
 
     @Override
     public void setCorreo(String correo) {
         //Valida que meta una entrada valida de correo
-        if(correo.matches("[\\d\\w\\s@]+")) super.setCorreo(correo);
-        else throw new IllegalArgumentException("Formato de correo invalido");
+        if(correo.matches("[a-z.]+@.*")) super.setCorreo(correo);
+        else throw new IllegalArgumentException("Formato de correo invalido\nRevisa los '.' o los '@'\nRecuerda que todo debe estar en minusculas sin acentos");
     }
 
     @Override
     public void setCodigo(int codigo) {
-        super.setCodigo(codigo);
+        if(codigo != 0)super.setCodigo(codigo);
+        else throw new IllegalArgumentException("Escriba bien el codigo");
     }
 
     @Override
     public void setName(String name) {
-        super.setName(name); 
+        if(name.matches("[A-Za-zÁÉÍÓÚáéíóú\\s']+"))super.setName(name); 
+        else throw new IllegalArgumentException("¿Apoco tu nombre lleva numeros o cosas raras?\n¿O no tienes nombre?");
     }
     
     
