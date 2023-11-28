@@ -36,7 +36,7 @@ public class Alumnos extends Personas{
 
     public void setPromedio(int index, float promedio) {
         if(promedio >= 0 && promedio <= 100)this.promedio[index] = promedio;
-        else throw new IllegalArgumentException("Promedio invalido");
+        else throw new NumberFormatException("Promedio invalido");
     }
 
     public void setHorario(int index, String horario) {
@@ -170,7 +170,7 @@ public class Alumnos extends Personas{
         if(edad > 10 && edad < 110)
             super.setEdad(edad);
         else
-            throw new IllegalArgumentException("Escriba una edad mayor a 10 años\nEstas en una universidad por dios");
+            throw new NumberFormatException("Escriba una edad mayor a 10 años\nEstas en una universidad por dios");
     }
 
     @Override
@@ -183,7 +183,7 @@ public class Alumnos extends Personas{
     @Override
     public void setCodigo(int codigo) {
         if(codigo != 0)super.setCodigo(codigo);
-        else throw new IllegalArgumentException("Escriba bien el codigo");
+        else throw new NumberFormatException("Escriba bien el codigo");
     }
 
     @Override
