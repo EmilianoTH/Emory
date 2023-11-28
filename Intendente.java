@@ -78,7 +78,7 @@ public class Intendente extends Trabajadores{
         if(edad > 10 && edad < 110)
             super.setEdad(edad);
         else
-            throw new IllegalArgumentException("Escriba una edad mayor a 10 años\nEstas en una universidad por dios");
+            throw new NumberFormatException("Escriba una edad mayor a 10 años\nEstas en una universidad por dios");
     }
 
     @Override
@@ -91,7 +91,7 @@ public class Intendente extends Trabajadores{
     @Override
     public void setCodigo(int codigo) {
         if(codigo != 0)super.setCodigo(codigo);
-        else throw new IllegalArgumentException("Escriba bien el codigo");
+        else throw new NumberFormatException("Escriba bien el codigo");
     }
 
     @Override
@@ -203,7 +203,7 @@ public class Intendente extends Trabajadores{
     @Override
     public void setSueldo(float sueldo) {
         if (sueldo > 0 && sueldo < 1000000)super.setSueldo(sueldo);
-        else throw new IllegalArgumentException("No escriba sueldos negativos ni tampoco imposibles");
+        else throw new NumberFormatException("No escriba sueldos negativos ni tampoco imposibles");
     }
     
     /* Metodo Polimorfico */
